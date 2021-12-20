@@ -6,7 +6,7 @@ scilla_version 0
 
 import ListUtils
 
-library STREAMDistributor
+library PELEDistributor
 
 (* [start] DistributorLib.scillib [start] *)
 
@@ -84,9 +84,9 @@ let none = None {ByStr20}
 (*             The contract definition             *)
 (***************************************************)
 
-contract STREAMDistributor
+contract PELEDistributor
 (
-  stream_token_contract : ByStr20,
+  pele_token_contract : ByStr20,
   init_owner : ByStr20
 )
 
@@ -215,7 +215,7 @@ procedure ValidateAndMarkClaim(claim: Claim)
 end
 
 procedure Distribute(recipient: ByStr20, amount: Uint128)
-  msg_to_token = {_tag : "Transfer"; _recipient : stream_token_contract; _amount : zero;
+  msg_to_token = {_tag : "Transfer"; _recipient : pele_token_contract; _amount : zero;
                   to : recipient; amount : amount};
   msgs = one_msg msg_to_token;
   send msgs
